@@ -34,5 +34,10 @@ namespace StatkiPowietrzne
         {
             return wzrost;
         }
+
+        public void SetLot(Trasa l)
+        {
+            lot = l;
+        }
     }
 }
