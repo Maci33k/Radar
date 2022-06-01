@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.IO;
 
-namespace Radar
+namespace StatkiPowietrzne
 {
     public class Punkt
     {
@@ -41,9 +41,7 @@ namespace Radar
 
         public Linia(Punkt start, Punkt koniec, int prd, int wys)
         {
-            //if sprawdzajacy czy koordynaty sa poza mapa
             this.poczatek = start;
-            //if sprawdzajacy czy koordynaty sa poza mapa
             this.koniec = koniec;
             if (prd > 0)
             {
@@ -83,11 +81,11 @@ namespace Radar
         protected double szerokosc;
         protected double wysokosc;
         protected double dlugosc;
-        protected double kolor; //ja tu bym chyba string pierdolna
+        protected double kolor; //kolor w c# ogarnac
         protected Punkt srodek;
-        protected Trasa sciezka;//???????
+        protected Trasa sciezka;//obiekt ruchomy
 
-        public Obiekt(double sz, double dl, double wys, double kolor, Punkt srd)
+        public Obiekt(double sz, double wys, double dl, double kolor, Punkt srd)
         {
             if (sz > 0)
             {
@@ -116,6 +114,7 @@ namespace Radar
             this.kolor = kolor;
             this.srodek = srd;
         }
+        //konstruktor ruchomego ze sciezka
         public double GetSzerokosc()
         {
             return szerokosc;
@@ -128,7 +127,6 @@ namespace Radar
         {
             return wysokosc;
         }
-        //tu nawet getkolor nie ma to nie wiem
 
 
     }
