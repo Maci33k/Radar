@@ -9,7 +9,7 @@ namespace StatkiPowietrzne
 
             string[,] Radar = new string[20, 20];
             Pusty(Radar);
-            //Console.OutputEncoding = System.Text.Encoding.UTF8;
+            //Console.OutputEncoding = System.Text.Encoding.UTF8; to i wszystkie \u(costam) jest do emoji czyt. do zabawy pozniej jesli bedzie czas
             Wypisz(Radar);
             ConsoleKeyInfo k;
             do
@@ -38,13 +38,13 @@ namespace StatkiPowietrzne
 
 
         }
-        public static void Czas(string[,] Radar)//prototyp
+        public static void Czas(string[,] Radar)//to nie wiem czemu istnieje? dlaczego ja istnieje? kim jestesmy? dokad zmierzamy?
         {
             Przesun(Radar);
             Wypisz(Radar);
 
         }
-        public static void Przesun(string[,] Radar)//prototyp
+        public static void Przesun(string[,] Radar)//prototyp przesuwania czasu sie zrobi automatycznie jakos pozniej i przerobi to w wykrywanie kolizji 
         {
             //OD WSPOLZEDNYCH SRODKA BEDZIE SIE SPRAWDZALO CZY TE X CZY INNE BALONY NADAL TAM SA I WTEDY JESLI SA TO GIT A JAK NIE TO DODAJA SIE NA POZIOMIE PRZESUWANIA CZYLI TU XDD I JAK JAKIS JEST POZA SAMOLTOEM TAK JAKBY TO GO USUWA BUM
             for (int i = 0; i < Radar.GetLength(0); i++)
@@ -55,8 +55,8 @@ namespace StatkiPowietrzne
                     {
                         Radar[i, j] = "~";
                         //if czy inny ch sprawdzajacy wspolzedne trasy teraz bedzie 0,0
-                        int x = 0;
-                        int y = 0;
+                        int x = 0;//temp na x Punktu
+                        int y = 0;//temp na y Punktu
                         if (x == i && y == j)
                         {
 
@@ -89,23 +89,23 @@ namespace StatkiPowietrzne
         }
 
 
-        public static void DodajSamolot(string [,] Radar)//prototyp
+        public static void DodajSamolot(string [,] Radar)//prototyp generacji losowego samolotu narazie tylko jeden typ
         {
             Random r = new();
             int i = r.Next(Radar.GetLength(0));
-            int szerokosc = 2;
-            int wysokosc = 2;
+            int szerokosc = 2;//temp na szerokosc samolotu
+            int wysokosc = 0;//temp na dlugosc samolotu
             if (i == 0 | i == Radar.GetLength(0)-1)
             {
                 int j = r.Next(Radar.GetLength(1)-1);
                 Radar[i, j] = "X";
                 for (int w = 0; w <= wysokosc; w++)
                 {
-                    if (i + w <= Radar.GetLength(0) - 1)//dolna wys
+                    if (i + w <= Radar.GetLength(0) - 1)//dolna dl
                     {
                         Radar[i + w, j] = "X";
                     }
-                    if (i - w >= 0)//gorna wys
+                    if (i - w >= 0)//gorna dl
                     {
                         Radar[i - w, j] = "X";
                     }
@@ -133,11 +133,11 @@ namespace StatkiPowietrzne
                     Radar[i, x] = "X";
                     for (int w = 0; w <= wysokosc; w++)
                     {
-                        if (i + w <= Radar.GetLength(0) - 1)//dolna wys
+                        if (i + w <= Radar.GetLength(0) - 1)//dolna dl
                         {
                             Radar[i + w, x] = "X";
                         }
-                        if (i - w >= 0)//gorna wys
+                        if (i - w >= 0)//gorna dl
                         {
                             Radar[i - w, x] = "X";
                         }
@@ -163,11 +163,11 @@ namespace StatkiPowietrzne
                     Radar[i, Radar.GetLength(1) - 1] = "X";
                     for(int w = 0; w <= wysokosc; w++)
                     {
-                        if (i + w <= Radar.GetLength(0) - 1)//dolna wys
+                        if (i + w <= Radar.GetLength(0) - 1)//dolna dl
                         {
                             Radar[i + w, x] = "X";
                         }
-                        if (i - w >= 0)//gorna wys
+                        if (i - w >= 0)//gorna dl
                         {
                             Radar[i - w, x] = "X";
                         }
@@ -191,7 +191,7 @@ namespace StatkiPowietrzne
             }
             
         }
-        public static void Pusty(string[,] Radar)
+        public static void Pusty(string[,] Radar)//strasznie okrojony prototyp obrazu. zeruje niebo czyt. usuwa wszystkie elementy znajdujace sie na radarze lub inaczej wypelnia caly radar w polach pustych czyli ~ 
         {
             for (int i = 0; i < Radar.GetLength(0); i++)
             {
@@ -203,7 +203,7 @@ namespace StatkiPowietrzne
             }
 
         }
-        public static void Wypisz(string[,] Radar)
+        public static void Wypisz(string[,] Radar)//to takie pomocnicze do pokazywania graficznego co sie dzieje akurat na radarze. pewnie zostanie jako radar po usprawnieniach. wydaje mi sie ze powinna byc to metoda w mainie juz
         {
 
             Console.Clear();
