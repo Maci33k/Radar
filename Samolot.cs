@@ -8,7 +8,7 @@ namespace StatkiPowietrzne
 {
     public  class Samolot : Statek
     {
-        public Samolot(Punkt Srodek, double Szerokosc, double Dlugosc, char Znak) : base(Srodek, Szerokosc, Dlugosc)
+        public Samolot(Punkt Srodek, int Szerokosc, int Dlugosc, string Znak) : base(Srodek, Szerokosc, Dlugosc)
         {
             base.Znak = Znak; 
         }

@@ -9,7 +9,7 @@ namespace StatkiPowietrzne
     public class Balon : Statek
     {
         
-        public Balon(Punkt Srodek, double Szerokosc, double Dlugosc, char Znak) : base(Srodek, Szerokosc, Dlugosc)
+        public Balon(Punkt Srodek, int Szerokosc, int Dlugosc, string Znak) : base(Srodek, Szerokosc, Dlugosc)
         {
             base.Znak = Znak;
         }

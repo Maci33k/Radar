@@ -9,11 +9,11 @@ namespace StatkiPowietrzne
     public class Statek
     {
         protected Punkt Srodek;
-        protected double Szerokosc;
-        protected double Dlugosc;
-        protected char Znak;
+        protected int Szerokosc;
+        protected int Dlugosc;
+        protected string Znak;
 
-        public Statek(Punkt Srodek, double Szerokosc, double Dlugosc)
+        public Statek(Punkt Srodek, int Szerokosc, int Dlugosc)
         {
             this.Srodek = Srodek;
             this.Szerokosc = Szerokosc;
@@ -32,9 +32,21 @@ namespace StatkiPowietrzne
         {
             return Dlugosc;
         }
-        public char getZnak()
+        public string GetZnak()
         {
             return Znak;
+        }
+        public void SetZnak(string  Znak)
+        {
+            this.Znak = Znak;  
+        }
+        public void SetDlugosc(int Dlugosc)
+        {
+            this.Dlugosc = Dlugosc;
+        }
+        public void SetSzerokosc(int Szerokosc)
+        {
+            this.Szerokosc = Szerokosc;
         }
         
 
