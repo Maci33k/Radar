@@ -8,26 +8,76 @@ namespace StatkiPowietrzne
 {
     public class NaRadar
     {
-        public void DodajStatek( string[,] radar, Punkt srodek, int szerokosc, int dlugosc,string znak)
+        public void DodajSamolot( string[,] radar, Punkt srodek, int szerokosc, int dlugosc)
         {
-            Samolot samolot = new Samolot(srodek, szerokosc, dlugosc, znak);
-            radar[srodek.GetX(), srodek.GetY()] = znak;
+            Statek samolot = new Samolot(srodek, szerokosc, dlugosc);
+            radar[srodek.GetX(), srodek.GetY()] = samolot.GetZnak();
             for (int i = 0; i <= dlugosc; ++i)
             {
-                radar[srodek.GetX(), srodek.GetY() + i] = znak;
-                radar[srodek.GetX(), srodek.GetY() - i] = znak;
+                radar[srodek.GetX(), srodek.GetY() + i] = samolot.GetZnak();
+                radar[srodek.GetX(), srodek.GetY() - i] = samolot.GetZnak();
             }
             for (int i = 0; i <= szerokosc; ++i)
             {
-                radar[srodek.GetX() + i, srodek.GetY()] = znak;
-                radar[srodek.GetX() - i, srodek.GetY()] = znak;
+                radar[srodek.GetX() + i, srodek.GetY()] = samolot.GetZnak();
+                radar[srodek.GetX() - i, srodek.GetY()] = samolot.GetZnak();
             }
         }
-        public void DodajX(string[,] radar, Punkt Srodek, int szerokosc, int dlugosc, string znak)
+
+        public void DodajSmiglowiec(string[,] radar, Punkt srodek, int szerokosc, int dlugosc)
         {
-            Samolot samolot = new Samolot(Srodek, szerokosc, dlugosc, znak);
-            radar[Srodek.GetX(), Srodek.GetY()] = znak;
+            Statek smiglowiec = new Smiglowiec(srodek, szerokosc, dlugosc);
+            radar[srodek.GetX(), srodek.GetY()] = smiglowiec.GetZnak();
+            for (int i = 0; i <= dlugosc; ++i)
+            {
+                radar[srodek.GetX(), srodek.GetY() + i] = smiglowiec.GetZnak();
+                radar[srodek.GetX(), srodek.GetY() - i] = smiglowiec.GetZnak();
+            }
+            for (int i = 0; i <= szerokosc; ++i)
+            {
+                radar[srodek.GetX() + i, srodek.GetY()] = smiglowiec.GetZnak();
+                radar[srodek.GetX() - i, srodek.GetY()] = smiglowiec.GetZnak();
+            }
+        }
+        public void DodajSzybowiec(string[,] radar, Punkt srodek, int szerokosc, int dlugosc)
+        {
+            Statek szybowiec = new Szybowiec(srodek, szerokosc, dlugosc);
+            radar[srodek.GetX(), srodek.GetY()] = szybowiec.GetZnak();
+            for (int i = 0; i <= dlugosc; ++i)
+            {
+                radar[srodek.GetX(), srodek.GetY() + i] = szybowiec.GetZnak();
+                radar[srodek.GetX(), srodek.GetY() - i] = szybowiec.GetZnak();
+            }
+            for (int i = 0; i <= szerokosc; ++i)
+            {
+                radar[srodek.GetX() + i, srodek.GetY()] = szybowiec.GetZnak();
+                radar[srodek.GetX() - i, srodek.GetY()] = szybowiec.GetZnak();
+            }
+
+        }
+        public void DodajBalon(string[,] radar, Punkt srodek, int szerokosc, int dlugosc)
+        {
+            Statek balon = new Balon(srodek, szerokosc, dlugosc);
+            radar[srodek.GetX(), srodek.GetY()] = balon.GetZnak();
+            for (int i = 0; i <= dlugosc; ++i)
+            {
+                radar[srodek.GetX(), srodek.GetY() + i] = balon.GetZnak();
+                radar[srodek.GetX(), srodek.GetY() - i] = balon.GetZnak();
+            }
+            for (int i = 0; i <= szerokosc; ++i)
+            {
+                radar[srodek.GetX() + i, srodek.GetY()] = balon.GetZnak();
+                radar[srodek.GetX() - i, srodek.GetY()] = balon.GetZnak();
+            }
         }
 
+
     }
+
+
+
 }
+
+
+
+

@@ -8,8 +8,8 @@ namespace StatkiPowietrzne
 {
     public class Smiglowiec : Statek
     {
-        
-        public Smiglowiec(Punkt Srodek, int Szerokosc, int Dlugosc, string Znak) : base(Srodek, Szerokosc, Dlugosc)
+        private String Znak = "#"; 
+        public Smiglowiec(Punkt Srodek, int Szerokosc, int Dlugosc) : base(Srodek, Szerokosc, Dlugosc)
         {
             base.Znak = Znak;
         }

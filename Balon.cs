@@ -8,8 +8,8 @@ namespace StatkiPowietrzne
 {
     public class Balon : Statek
     {
-        
-        public Balon(Punkt Srodek, int Szerokosc, int Dlugosc, string Znak) : base(Srodek, Szerokosc, Dlugosc)
+        private string Znak = "@";
+        public Balon(Punkt Srodek, int Szerokosc, int Dlugosc) : base(Srodek, Szerokosc, Dlugosc)
         {
             base.Znak = Znak;
         }
