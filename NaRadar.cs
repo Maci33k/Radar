@@ -18,19 +18,17 @@ namespace StatkiPowietrzne
             radar[srodek.GetX(), srodek.GetY()] = samolot.GetZnak();
             for (int i = 0; i <= dlugosc; ++i)
             {
-                if(srodek.GetY() + i < radar.GetLength(1) && srodek.GetY() - i >= 0)
-                {
+                if(srodek.GetY() + i >= 0 && srodek.GetY() + i < radar.GetLength(1))
                     radar[srodek.GetX(), srodek.GetY() + i] = samolot.GetZnak();
-                    radar[srodek.GetX(), srodek.GetY() - i] = samolot.GetZnak();
-                }
+                if(srodek.GetY() - i >= 0 && srodek.GetY() - i < radar.GetLength(1)) 
+                radar[srodek.GetX(), srodek.GetY() - i] = samolot.GetZnak();
             }
             for (int i = 0; i <= szerokosc; ++i)
             {
-                if (srodek.GetX() + i < radar.GetLength(0) && srodek.GetX() - i >= 0)
-                {
+               if(srodek.GetX() + i >= 0 && srodek.GetX() + i < radar.GetLength(0))
                     radar[srodek.GetX() + i, srodek.GetY()] = samolot.GetZnak();
-                    radar[srodek.GetX() - i, srodek.GetY()] = samolot.GetZnak();
-                }
+               if(srodek.GetX() - i >= 0 && srodek.GetX() - i < radar.GetLength(0)) 
+                radar[srodek.GetX() - i, srodek.GetY()] = samolot.GetZnak();
             }
         }
 
@@ -41,19 +39,17 @@ namespace StatkiPowietrzne
             radar[srodek.GetX(), srodek.GetY()] = smiglowiec.GetZnak();
             for (int i = 0; i <= dlugosc; ++i)
             {
-                if (srodek.GetY() + i < radar.GetLength(1) && srodek.GetY() - i >= 0)
-                { 
+                if (srodek.GetY() + i >= 0 && srodek.GetY() + i < radar.GetLength(1))
                     radar[srodek.GetX(), srodek.GetY() + i] = smiglowiec.GetZnak();
+                if (srodek.GetY() - i >= 0 && srodek.GetY() - i < radar.GetLength(1))
                     radar[srodek.GetX(), srodek.GetY() - i] = smiglowiec.GetZnak();
-                }
             }
             for (int i = 0; i <= szerokosc; ++i)
             {
-                if (srodek.GetX() + i < radar.GetLength(0) && srodek.GetX() - i >= 0)
-                {
+                if (srodek.GetX() + i >= 0 && srodek.GetX() + i < radar.GetLength(0))
                     radar[srodek.GetX() + i, srodek.GetY()] = smiglowiec.GetZnak();
+                if (srodek.GetX() - i >= 0 && srodek.GetX() - i < radar.GetLength(0))
                     radar[srodek.GetX() - i, srodek.GetY()] = smiglowiec.GetZnak();
-                }
             }
         }
         public void DodajSzybowiec(string[,] radar, Punkt srodek, int szerokosc, int dlugosc)
@@ -63,19 +59,17 @@ namespace StatkiPowietrzne
             radar[srodek.GetX(), srodek.GetY()] = szybowiec.GetZnak();
             for (int i = 0; i <= dlugosc; ++i)
             {
-                if (srodek.GetY() + i < radar.GetLength(1) && srodek.GetY() - i >= 0)
-                {
+                if (srodek.GetY() + i >= 0 && srodek.GetY() + i < radar.GetLength(1))
                     radar[srodek.GetX(), srodek.GetY() + i] = szybowiec.GetZnak();
+                if (srodek.GetY() - i >= 0 && srodek.GetY() - i < radar.GetLength(1))
                     radar[srodek.GetX(), srodek.GetY() - i] = szybowiec.GetZnak();
-                }
             }
             for (int i = 0; i <= szerokosc; ++i)
             {
-                if (srodek.GetX() + i < radar.GetLength(0) && srodek.GetX() - i >= 0)
-                {
+                if (srodek.GetX() + i >= 0 && srodek.GetX() + i < radar.GetLength(0))
                     radar[srodek.GetX() + i, srodek.GetY()] = szybowiec.GetZnak();
+                if (srodek.GetX() - i >= 0 && srodek.GetX() - i < radar.GetLength(0))
                     radar[srodek.GetX() - i, srodek.GetY()] = szybowiec.GetZnak();
-                }
             }
 
         }
@@ -86,19 +80,18 @@ namespace StatkiPowietrzne
             radar[srodek.GetX(), srodek.GetY()] = balon.GetZnak();
             for (int i = 0; i <= dlugosc; ++i)
             {
-                if (srodek.GetY() + i < radar.GetLength(1) && srodek.GetY() - i >= 0)
-                {
+                if (srodek.GetY() + i >= 0 && srodek.GetY() + i < radar.GetLength(1))
                     radar[srodek.GetX(), srodek.GetY() + i] = balon.GetZnak();
+                if (srodek.GetY() - i >= 0 && srodek.GetY() - i < radar.GetLength(1))
                     radar[srodek.GetX(), srodek.GetY() - i] = balon.GetZnak();
-                }
             }
             for (int i = 0; i <= szerokosc; ++i)
             {
                 if (srodek.GetX() + i < radar.GetLength(0) && srodek.GetX() - i >= 0)
-                {
-                    radar[srodek.GetX() + i, srodek.GetY()] = balon.GetZnak();
+                    if (srodek.GetX() + i >= 0 && srodek.GetX() + i < radar.GetLength(0))
+                        radar[srodek.GetX() + i, srodek.GetY()] = balon.GetZnak();
+                if (srodek.GetX() - i >= 0 && srodek.GetX() - i < radar.GetLength(0))
                     radar[srodek.GetX() - i, srodek.GetY()] = balon.GetZnak();
-                }
             }
         }
         public ListaStatkow GetStatki()
