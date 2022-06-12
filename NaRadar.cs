@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace StatkiPowietrzne
 {
     public class NaRadar
     {
+        ListaStatkow lista = new ListaStatkow();
+        
         public void DodajSamolot( string[,] radar, Punkt srodek, int szerokosc, int dlugosc)
         {
             Statek samolot = new Samolot(srodek, szerokosc, dlugosc);
+            lista.DodajDoListy(samolot);
             radar[srodek.GetX(), srodek.GetY()] = samolot.GetZnak();
             for (int i = 0; i <= dlugosc; ++i)
             {
@@ -33,6 +37,7 @@ namespace StatkiPowietrzne
         public void DodajSmiglowiec(string[,] radar, Punkt srodek, int szerokosc, int dlugosc)
         {
             Statek smiglowiec = new Smiglowiec(srodek, szerokosc, dlugosc);
+            lista.DodajDoListy(smiglowiec);
             radar[srodek.GetX(), srodek.GetY()] = smiglowiec.GetZnak();
             for (int i = 0; i <= dlugosc; ++i)
             {
@@ -54,6 +59,7 @@ namespace StatkiPowietrzne
         public void DodajSzybowiec(string[,] radar, Punkt srodek, int szerokosc, int dlugosc)
         {
             Statek szybowiec = new Szybowiec(srodek, szerokosc, dlugosc);
+            lista.DodajDoListy(szybowiec);
             radar[srodek.GetX(), srodek.GetY()] = szybowiec.GetZnak();
             for (int i = 0; i <= dlugosc; ++i)
             {
@@ -76,6 +82,7 @@ namespace StatkiPowietrzne
         public void DodajBalon(string[,] radar, Punkt srodek, int szerokosc, int dlugosc)
         {
             Statek balon = new Balon(srodek, szerokosc, dlugosc);
+            lista.DodajDoListy(balon);
             radar[srodek.GetX(), srodek.GetY()] = balon.GetZnak();
             for (int i = 0; i <= dlugosc; ++i)
             {
@@ -94,7 +101,11 @@ namespace StatkiPowietrzne
                 }
             }
         }
-
+        public ListaStatkow GetStatki()
+        {
+            return lista;
+        }
+        
 
     }
 
