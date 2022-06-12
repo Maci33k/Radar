@@ -8,7 +8,7 @@ namespace StatkiPowietrzne
 {
     public class Smiglowiec : Statek
     {
-        private String Znak = "#"; 
+        private new string Znak = "#"; 
         public Smiglowiec(Punkt Srodek, int Szerokosc, int Dlugosc) : base(Srodek, Szerokosc, Dlugosc)
         {
             base.Znak = Znak;

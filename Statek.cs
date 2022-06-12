@@ -11,7 +11,7 @@ namespace StatkiPowietrzne
         protected Punkt Srodek;
         protected int Szerokosc;
         protected int Dlugosc;
-        protected string Znak;
+        protected string? Znak;
 
         public Statek(Punkt Srodek, int Szerokosc, int Dlugosc)
         {
@@ -34,7 +34,14 @@ namespace StatkiPowietrzne
         }
         public string GetZnak()
         {
-            return Znak;
+            if (Znak != null)
+            {
+                return Znak;
+            }
+            else
+            {
+                return "thonk";
+            }
         }
         public void SetZnak(string  Znak)
         {
