@@ -4,14 +4,16 @@ namespace StatkiPowietrzne
 
     class Prototyp_prymitywny
     {
+
         static void Main()
         {
 
             string[,] Radar = new string[40, 94];
+            Radar rad = new();
             Pusty(Radar);
             //Console.OutputEncoding = System.Text.Encoding.UTF8; to i wszystkie \u(costam) jest do emoji czyt. do zabawy pozniej jesli bedzie czas
             Wypisz(Radar);
-            Punkt punkt = new Punkt(15,93);
+            Punkt punkt = new Punkt(15,15);
             ConsoleKeyInfo k;
             do
             {
@@ -19,7 +21,7 @@ namespace StatkiPowietrzne
                 switch (k.Key)
                 {
                     case ConsoleKey.D1:
-                        WygenerujSamolot(Radar);
+                        WygenerujSamolot(Radar, rad);
                         break;
                     case ConsoleKey.D2:
                         Przesun(Radar);
@@ -31,7 +33,7 @@ namespace StatkiPowietrzne
                         break;
                         //
                     case ConsoleKey.D8:
-                        WygenerujSamolot(Radar, punkt);
+                        WygenerujSamolot(Radar, punkt, rad);
 
                         break;
                     //
@@ -107,8 +109,8 @@ namespace StatkiPowietrzne
                     }
                 }
                 //if czy inny ch sprawdzajacy wspolzedne trasy teraz bedzie 0,0
-                int x = 0;//temp na x Punktu
-                int y = 0;//temp na y Punktu
+                int x = 5;//temp na x Punktu
+                int y = 5;//temp na y Punktu
                 if (x == i && y == j)
                 {
 
@@ -222,7 +224,7 @@ namespace StatkiPowietrzne
 
         }
 
-        public static void WygenerujSamolot(string[,] Radar)//prototyp generacji losowego samolotu narazie tylko jeden typ
+        public static void WygenerujSamolot(string[,] Radar, Radar rad)//prototyp generacji losowego samolotu narazie tylko jeden typ
         {
             Random r = new();
             int i = r.Next(Radar.GetLength(0));
@@ -230,7 +232,7 @@ namespace StatkiPowietrzne
             {
                 int j = r.Next(Radar.GetLength(1) - 1);
                 Punkt sr = new Punkt(i, j);
-                WygenerujSamolot(Radar, sr);
+                WygenerujSamolot(Radar, sr, rad);
 
             }
             else
@@ -239,48 +241,75 @@ namespace StatkiPowietrzne
                 if (x == 0)
                 {
                     Punkt sr = new Punkt(i, x);
-                    WygenerujSamolot(Radar, sr);
+                    WygenerujSamolot(Radar, sr, rad);
 
                 }
                 else
                 {
                     x = Radar.GetLength(1) - 1;
                     Punkt sr = new Punkt(i, x);
-                    WygenerujSamolot(Radar, sr);
+                    WygenerujSamolot(Radar, sr, rad);
 
                 }
             }
         }
-        public static void WygenerujSamolot(string[,] Radar, Punkt sr)//prototyp generacji losowego samolotu narazie tylko jeden typ
+        public static void WygenerujSamolot(string[,] Radar, Punkt sr, Radar rad)//prototyp generacji losowego samolotu narazie tylko jeden typ
         {
             Random r = new();
             int i = sr.GetX();
             int j = sr.GetY();
             int znakr = r.Next(0, 4);
-            string znak;
             int szerokosc;
             int dlugosc;
             switch (znakr)
             {
                 case 0:
-                    znak = "X";
                     szerokosc = r.Next(2, 4);
                     dlugosc = r.Next(2, 4);
+                    if (Radar[i, j] != "X" | Radar[i, j] != "*" | Radar[i, j] != "#" | Radar[i, j] != "@")
+                    {
+                        rad.DodajSamolot(Radar,sr,szerokosc,dlugosc);
+                    }
+                    else
+                    {
+                        WygenerujSamolot(Radar,rad);
+                    }
                     break;
                 case 1:
-                    znak = "@";
                     szerokosc = 0;
                     dlugosc = 0;
+                    if (Radar[i, j] != "X" | Radar[i, j] != "*" | Radar[i, j] != "#" | Radar[i, j] != "@")
+                    {
+                        rad.DodajBalon(Radar, sr, szerokosc, dlugosc);
+                    }
+                    else
+                    {
+                        WygenerujSamolot(Radar, rad);
+                    }
                     break;
                 case 2:
-                    znak = "*";
                     szerokosc = r.Next(1, 3);
                     dlugosc = r.Next(1, 3);
+                    if (Radar[i, j] != "X" | Radar[i, j] != "*" | Radar[i, j] != "#" | Radar[i, j] != "@")
+                    {
+                        rad.DodajSzybowiec(Radar, sr, szerokosc, dlugosc);
+                    }
+                    else
+                    {
+                        WygenerujSamolot(Radar, rad);
+                    }
                     break;
                 case 3:
-                    znak = "#";
                     szerokosc = r.Next(0, 2);
                     dlugosc = r.Next(0, 2);
+                    if (Radar[i, j] != "X" | Radar[i, j] != "*" | Radar[i, j] != "#" | Radar[i, j] != "@")
+                    {
+                        rad.DodajSmiglowiec(Radar, sr, szerokosc, dlugosc);
+                    }
+                    else
+                    {
+                        WygenerujSamolot(Radar, rad);
+                    }
                     break;
                 default:
                     znak = "XD";
@@ -290,39 +319,8 @@ namespace StatkiPowietrzne
 
             }
 
-                if(Radar[i, j] != "X" | Radar[i, j] != "*" | Radar[i, j] != "#" | Radar[i, j] != "@")
-                {
-                    Radar[i, j] = znak;
-                }
-                else
-                {
-                    WygenerujSamolot(Radar);
-                }
-                for (int w = 0; w <= dlugosc; w++)
-                {
-                    if (i + w <= Radar.GetLength(0) - 1)//dolna dl
-                    {
-                        Radar[i + w, j] = znak;
-                    }
-                    if (i - w >= 0)//gorna dl
-                    {
-                        Radar[i - w, j] = znak;
-                    }
-
-                }
-                for (int s = 0; s <= szerokosc; s++)
-                {
-                    if (j + s <= Radar.GetLength(1) - 1)//prawa szer
-                    {
-                        Radar[i, j + s] = znak;
-                    }
-                    if (j - s >= 0)//lewa szer
-                    {
-                        Radar[i, j - s] = znak;
-                    }
-                    //Radar[i, j] = "\u2708";
-                }
-
+                
+                
                 Wypisz(Radar);
 
 
