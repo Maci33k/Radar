@@ -13,7 +13,7 @@ namespace StatkiPowietrzne
         {
             base.Znak = Znak;
             Random r = new Random();
-            base.Koniec = new Punkt(r.Next(0, 94), r.Next(0, 40));
+            base.Koniec = new Punkt(r.Next(10, 94), r.Next(10, 40));
         }
         
         
