@@ -12,17 +12,30 @@ namespace StatkiPowietrzne
         protected string Znak;
         protected Punkt Koniec;
 
+        public Statek()
+        {
+
+        }
+        public Statek(Statek s)
+        {
+            this.Srodek = s.GetSrodek();
+            Random r = new Random();
+            Koniec = new Punkt(r.Next(10,20), r.Next(40,50));
+        }
         public Statek(Punkt Srodek)
         {
             this.Srodek = Srodek;
             Random r = new Random();
-            Koniec = new Punkt(r.Next(0, 10), 0);
+            Koniec = new Punkt(r.Next(10, 20), r.Next(40, 50));
         }
         public Punkt GetSrodek()
         {
             return Srodek;
         }
-
+        public void SetSrodek(Punkt p)
+        {
+            Srodek = new Punkt(p.GetX(), p.GetY());
+        }
 
         public string GetZnak()
         {
@@ -35,6 +48,11 @@ namespace StatkiPowietrzne
         public Punkt GetKoniec()
         {
             return Koniec;
+        }
+
+        public void SetKoniec(Punkt p)
+        {
+            Koniec = new Punkt(p.GetX(), p.GetY());
         }
 
 

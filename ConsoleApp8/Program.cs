@@ -28,7 +28,7 @@ namespace StatkiPowietrzne
                         WygenerujSamolot(Radar, rad);
                         break;
                     case ConsoleKey.D2:
-                        Przesun(Radar);
+                        Przesun(Radar, rad);
                         Wypisz(Radar);
                         break;
                     case ConsoleKey.D3:
@@ -61,12 +61,12 @@ namespace StatkiPowietrzne
 
 
         }
-        public static void Przesun(string[,] Radar)
+        public static void Przesun(string[,] Radar, NaRadar rad)
         {
-            Przesun(Radar, "X");
-            Przesun(Radar, "#");
-            Przesun(Radar, "*");
-            Przesun(Radar, "@");
+            Przesun(Radar, "X", rad);
+            Przesun(Radar, "#", rad);
+            Przesun(Radar, "*", rad);
+            Przesun(Radar, "@", rad);
         }
         public static void Przesun(string[,] Radar, string znak, Punkt sr, int sz, int dl)
         {
@@ -81,36 +81,27 @@ namespace StatkiPowietrzne
                 {
                     if (j + s <= Radar.GetLength(1) - 1)//prawa szer
                     {
-                        if (Radar[i, j + s] == znak)
-                        {
-                            Radar[i, j + s] = " ";
-                        }
+                        if (Radar[i, j + s] == znak) Radar[i, j + s] = " ";
+                        
                     }
                     if (j - s >= 0)//lewa szer
                     {
-                        if (Radar[i, j - s] == znak)
-                        {
-                            Radar[i, j - s] = " ";
-                        }
+                        if (Radar[i, j - s] == znak) Radar[i, j - s] = " ";
+
                     }
                 }
                 for (int d = 0; d <= dl; d++)
                 {
                     if (i + d <= Radar.GetLength(0) - 1)//dolna dl
                     {
-                        if (Radar[i + d, j] == znak)
-                        {
-                            Radar[i + d, j] = " ";
-                        }
+                        if (Radar[i + d, j] == znak) Radar[i + d, j] = " ";
+
                     }
 
                     if (i - d >= 0)//gorna dl
                     {
-                        if (Radar[i - d, j] == znak)
-                        {
-                            Radar[i - d, j] = " ";
-                        }
-                    }
+                        if (Radar[i - d, j] == znak) Radar[i - d, j] = " ";
+                     }
                 }
                 //if czy inny ch sprawdzajacy wspolzedne trasy teraz bedzie 0,0
                 int x = 5;//temp na x Punktu
@@ -121,19 +112,19 @@ namespace StatkiPowietrzne
                 }
                 else
                 {
-                    if (i - x > 0)
+                    if (i> x)
                     {
                         i = i - 1;
                     }
-                    if (i - x < 0)
+                    if (i  < x)
                     {
                         i = i + 1;
                     }
-                    if (j - y > 0)
+                    if (j > y)
                     {
                         j = j - 1;
                     }
-                    if (j - y < 0)
+                    if (j < y)
                     {
                         j = j + 1;
                     }
@@ -142,17 +133,11 @@ namespace StatkiPowietrzne
                     {
                         if (j + s <= Radar.GetLength(1) - 1)//prawa szer
                         {
-                            if (Radar[i, j + s] != znak)
-                            {
-                                Radar[i, j + s] = znak;
-                            }
+                            if (Radar[i, j + s] != znak) Radar[i, j + s] = znak;
                         }
                         if (j - s >= 0)//lewa szer
                         {
-                            if (Radar[i, j - s] != znak)
-                            {
-                                Radar[i, j - s] = znak;
-                            }
+                            if (Radar[i, j - s] != znak) Radar[i, j - s] = znak;
                         }
 
                     }
@@ -160,17 +145,11 @@ namespace StatkiPowietrzne
                     {
                         if (i + d <= Radar.GetLength(0) - 1)//dolna dl
                         {
-                            if (Radar[i + d, j] != znak)
-                            {
-                                Radar[i + d, j] = znak;
-                            }
+                            if (Radar[i + d, j] != znak) Radar[i + d, j] = znak;
                         }
                         if (i - d >= 0)//gorna dl
                         {
-                            if (Radar[i - d, j] != znak)
-                            {
-                                Radar[i - d, j] = znak;
-                            }
+                            if (Radar[i - d, j] != znak) Radar[i - d, j] = znak;
                         }
 
                     }
@@ -184,43 +163,66 @@ namespace StatkiPowietrzne
 
 
         }
-        public static void Przesun(string[,] Radar, string znak)//prototyp przesuwania czasu sie zrobi automatycznie jakos pozniej i przerobi to w wykrywanie kolizji 
+        public static void Przesun(string[,] Radar, string znak, NaRadar rad)//prototyp przesuwania czasu sie zrobi automatycznie jakos pozniej i przerobi to w wykrywanie kolizji 
         {
             //OD WSPOLZEDNYCH SRODKA BEDZIE SIE SPRAWDZALO CZY TE X CZY INNE BALONY NADAL TAM SA I WTEDY JESLI SA TO GIT A JAK NIE TO DODAJA SIE NA POZIOMIE PRZESUWANIA CZYLI TU XDD I JAK JAKIS JEST POZA SAMOLTOEM TAK JAKBY TO GO USUWA BUM
+            int x = 0;
+            int y = 0;
             for (int i = 0; i < Radar.GetLength(0); i++)
             {
                 for (int j = 0; j < Radar.GetLength(1); j++)
                 {
                     if (Radar[i, j] == znak /*Radar[i, j] == "\u2708"*/)
                     {
-                        Radar[i, j] = " ";
+                        Statek a = new Statek();
+                        foreach (Statek s in rad.GetStatki().GetLista()){
+                            if (i == s.GetSrodek().GetX() && j==s.GetSrodek().GetY())
+                            {
+                                a.SetKoniec(s.GetKoniec());
+                                a.SetSrodek(s.GetSrodek());
+                                break;
+                            }
+                        }
+                        
+                        if (a.GetKoniec() != null)
+                        {
+                            x = a.GetKoniec().GetX();
+                            y = a.GetKoniec().GetY();
+                            Radar[i, j] = " ";
+                        }
+                        else continue;
                         //if czy inny ch sprawdzajacy wspolzedne trasy teraz bedzie 0,0
-                        int x = 0;//temp na y Punktu
-                        int y = 0;//temp na x Punktu
                         if (x == i && y == j)
                         {
-                            return;
+                            Radar[x, y] = null;
+                            rad.GetStatki().GetLista().Remove(a);
+                            break;
                         }
                         else
                         {
-                            if (i - x > 0)
+
+                            if (i> x)
                             {
-                                if(Radar[i-1,j] == null|| Radar[i - 1, j] == " ") i = i - 1;
+                                if(Radar[i-1,j] == null|| Radar[i - 1, j] == " ") i--;
                             }
-                            if (i - x < 0)
+
+                            if (i  < x && i+1<Radar.GetLength(0))
                             {
-                                if(Radar[i+1, j]==null || Radar[i + 1, j] == " ") i = i + 1;
+                                if(Radar[i+1, j]==null || Radar[i + 1, j] == " ") i++;
                             }
-                            if (j - y > 0)
+
+                            if (j  > y)
                             {
-                                if(Radar[i,j-1]==null || Radar[i, j-1] == " ") j = j - 1;
+                                if(Radar[i,j-1]==null || Radar[i, j-1] == " ") j--;
                             }
-                            if (j - y < 0)
+
+                            if (j  < y && j + 1 < Radar.GetLength(1))
                             {
-                                if(Radar[i,j+1]==null || Radar[i, j-1] == " ") j = j + 1;
+                                if(Radar[i,j+1]==null || Radar[i, j+1] == " ") j++;
                             }
+                            
                             //Radar[i, j] = "\u2708";
-                            Radar[i, j] = znak;
+                            if(i<Radar.GetLength(0) && j<Radar.GetLength(1)) Radar[i, j] = znak;
                         }
                     }
                 }
@@ -231,8 +233,8 @@ namespace StatkiPowietrzne
         public static void WygenerujSamolot(string[,] Radar, NaRadar rad)//prototyp generacji losowego samolotu narazie tylko jeden typ
         {
             Random r = new();
-            int i = r.Next(Radar.GetLength(0));
-            if (i == 0 | i == Radar.GetLength(0) - 1)
+            int i = r.Next(0,Radar.GetLength(0));
+            if (i > 0 || i< Radar.GetLength(0) - 1)
             {
                 int j = r.Next(Radar.GetLength(1) - 1);
                 Punkt sr = new Punkt(i, j);
