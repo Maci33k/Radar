@@ -9,7 +9,7 @@ namespace StatkiPowietrzne
     public class Szybowiec : Statek
     {
         private string Znak = "*";
-        public Szybowiec(Punkt Srodek, int Szerokosc, int Dlugosc) : base(Srodek, Szerokosc, Dlugosc)
+        public Szybowiec(Punkt Srodek) : base(Srodek)
         {
             base.Znak = Znak;
         }

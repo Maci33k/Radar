@@ -9,7 +9,7 @@ namespace StatkiPowietrzne
     public  class Samolot : Statek
     {
         private string Znak = "X";
-        public Samolot(Punkt Srodek, int Szerokosc, int Dlugosc) : base(Srodek, Szerokosc, Dlugosc)
+        public Samolot(Punkt Srodek) : base(Srodek)
         {
             base.Znak = Znak;
         }
