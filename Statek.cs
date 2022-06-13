@@ -10,6 +10,7 @@ namespace StatkiPowietrzne
     {
         protected Punkt Srodek;
         protected string Znak;
+        protected Punkt Koniec;
 
         public Statek(Punkt Srodek)
         {
@@ -29,7 +30,10 @@ namespace StatkiPowietrzne
         {
             this.Znak = Znak;  
         }
-        
+        public Punkt GetKoniec()
+        {
+            return Koniec;
+        }
         
         
 
