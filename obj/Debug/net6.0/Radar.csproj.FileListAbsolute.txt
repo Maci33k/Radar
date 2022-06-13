@@ -1,0 +1,30 @@
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\bin\Debug\net6.0\Radar.exe
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\bin\Debug\net6.0\Radar.deps.json
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\bin\Debug\net6.0\Radar.runtimeconfig.json
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\bin\Debug\net6.0\Radar.dll
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\bin\Debug\net6.0\Radar.pdb
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\obj\Debug\net6.0\Radar.csproj.AssemblyReference.cache
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\obj\Debug\net6.0\Radar.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\obj\Debug\net6.0\Radar.AssemblyInfoInputs.cache
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\obj\Debug\net6.0\Radar.AssemblyInfo.cs
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\obj\Debug\net6.0\Radar.csproj.CoreCompileInputs.cache
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\obj\Debug\net6.0\Radar.dll
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\obj\Debug\net6.0\refint\Radar.dll
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\obj\Debug\net6.0\Radar.pdb
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\obj\Debug\net6.0\Radar.genruntimeconfig.cache
+C:\Users\macie\OneDrive\Pulpit\Projekt Radar\Radar\obj\Debug\net6.0\ref\Radar.dll
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\bin\Debug\net6.0\Radar.exe
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\bin\Debug\net6.0\Radar.deps.json
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\bin\Debug\net6.0\Radar.runtimeconfig.json
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\bin\Debug\net6.0\Radar.dll
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\bin\Debug\net6.0\Radar.pdb
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\obj\Debug\net6.0\Radar.csproj.AssemblyReference.cache
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\obj\Debug\net6.0\Radar.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\obj\Debug\net6.0\Radar.AssemblyInfoInputs.cache
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\obj\Debug\net6.0\Radar.AssemblyInfo.cs
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\obj\Debug\net6.0\Radar.csproj.CoreCompileInputs.cache
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\obj\Debug\net6.0\Radar.dll
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\obj\Debug\net6.0\refint\Radar.dll
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\obj\Debug\net6.0\Radar.pdb
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\obj\Debug\net6.0\Radar.genruntimeconfig.cache
+C:\Users\macie\OneDrive\Pulpit\Projekt-Radar\Radar\obj\Debug\net6.0\ref\Radar.dll
