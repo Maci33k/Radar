@@ -8,7 +8,9 @@ namespace StatkiPowietrzne
 {
     public class Smiglowiec : Statek
     {
+        // Unikalny znak dla śmigłowca
         private String Znak = "#";
+        // Konstruktor wraz z wywołaniem konstruktora klasy bazowej oraz wylosowanie punktu końcowego
         public Smiglowiec(Punkt Srodek) : base(Srodek)
         {
             base.Znak = Znak;

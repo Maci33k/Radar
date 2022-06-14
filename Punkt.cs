@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace StatkiPowietrzne
 {
+    // Klasa przechowująca pola reprezentujące statek na płaszczyźnie radaru, współrzędna x i y
     public class Punkt
     {
         protected int x;

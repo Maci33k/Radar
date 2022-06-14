@@ -7,11 +7,14 @@ using System.Collections;
 
 namespace StatkiPowietrzne
 {
-    public class NaRadar : Statek
+    // Klasa NaRadar jest pośrednikiem między statkami a radarem, tutaj są tworzone oraz rysowane
+    // na radar poszczególne statki powietrzne
+    public class NaRadar 
     {
-        protected Punkt Koniec = new Punkt(0,0);
-        ListaStatkow lista = new ListaStatkow();
+        
+        private ListaStatkow lista = new ListaStatkow();
 
+        // Metody do dodawania oraz rysowania statków powietrznych na radar
         public void DodajSamolot(string[,] radar, Punkt srodek, int szerokosc, int dlugosc)
         {
             Statek samolot = new Samolot(srodek);
@@ -40,11 +43,13 @@ namespace StatkiPowietrzne
             radar[srodek.GetX(), srodek.GetY()] = balon.GetZnak();
 
         }
+        // Pobiera aktualną listę statków
         public ListaStatkow GetStatki()
         {
             return lista;
         }
-       
+       // Metoda umożliwia śledzenie parametrów dotyczących lotu konkretnego statku powietrznego
+       // oraz rysuje punkty końcowe na radarze
         public void Sledzenie(int indeks, string[,] radar)
         {
             string statek = "statek";

@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace StatkiPowietrzne
 {
+    // Klasa bazowa podklas Samolot, Smiglowiec, Balon i Szybowiec
     public class Statek
     {
-        protected Punkt Srodek;
-        protected string Znak;
-        protected Punkt Koniec;
+        protected Punkt Srodek; // aktualne wspolrzedne statku
+        protected string Znak; // znak przedstawiający statek
+        protected Punkt Koniec; // współrzędne końca trasy statku, ew. miejsce lądowania
 
         public Statek()
         {
