@@ -9,7 +9,7 @@ namespace StatkiPowietrzne
 {
     public class ListaStatkow
     {
-       private List<Statek> lista = new();
+        private List<Statek> lista = new List<Statek>();
         public void DodajDoListy(Statek statek)
         {
             lista.Add(statek);
@@ -24,7 +24,9 @@ namespace StatkiPowietrzne
         }
         public Statek GetStatek(int indeks)
         {
-            return lista[indeks];
+            return lista.ElementAt(indeks);
         }
+        
+
     }
 }

@@ -12,6 +12,8 @@ namespace StatkiPowietrzne
         public Balon(Punkt Srodek) : base(Srodek)
         {
             base.Znak = Znak;
+            Random r = new Random();
+            base.Koniec = new Punkt(r.Next(10, 40), r.Next(10, 94));
         }
     }
 }
